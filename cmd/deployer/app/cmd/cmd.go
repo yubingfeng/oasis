@@ -7,6 +7,8 @@ package cmd
 import (
 
         "io"
+	"github.com/spf13/cobra"
+        "github.com/yubingfeng/oasis/cmd/deployer/app/util/flag"
 )
 
 func NewDeployerCommand(_ io.Reader, out, err io.Writer)  *cobra.Command {
@@ -18,8 +20,9 @@ func NewDeployerCommand(_ io.Reader, out, err io.Writer)  *cobra.Command {
         }
 
         cmds.ResetFlags()
-	cmds.SetGlobalNormalizationFunc(flag.WarnWordSepNormailizeFunc)
+	cmds.SetGlobalNormalizationFunc(flag.WarnWordSepNormalizeFunc)
 	cmds.AddCommand(NewCmdVersion(out))
+        cmds.AddCommand(NewCmdChaincode(out))
 
         return cmds
 }

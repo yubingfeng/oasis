@@ -16,7 +16,7 @@ func Run()  error {
 
         pflag.CommandLine.MarkHidden("version")
 	cmd :=cmd.NewDeployerCommand(os.Stdin, os.Stdout, os.Stderr)
-	return cmd.Execute
+	return cmd.Execute()
 
 }
 
